@@ -11,15 +11,15 @@ public interface JpaConst {
     String EMP_COL_ID = "id";
     String EMP_COL_CODE = "code";
     String EMP_COL_NAME = "name";
-    String EMP_COL_PASS = "pass";
+    String EMP_COL_PASS = "password";
     String EMP_COL_ADMIN_FLAG = "admin_flag";
     String EMP_COL_CREATED_AT = "created_at";
     String EMP_COL_UPDATED_AT = "updated_at";
     String EMP_COL_DELETE_FLAG = "delete_flag";
 
-    int ROLE_ADMIN = 1;
-    int ROLE_GENERAL = 0;
-    int EMP_DEL_TRUE = 1;
+    int ROLE_ADMIN = 1; //管理者
+    int ROLE_GENERAL = 0; //一般
+    int EMP_DEL_TRUE = 1; //削除済み
     int EMP_DEL_FALSE = 0;
 
     String TABLE_REP = "report";
@@ -47,7 +47,7 @@ public interface JpaConst {
 
     String Q_EMP_GET_BY_CODE_AND_PASS = ENTITY_EMP + ".getByCodeAndPass";
     String Q_EMP_GET_BY_CODE_AND_PASS_DEF = "SELECT e FROM Employee AS e WHERE e.deleteFlag = 0 AND e.code = :"
-            + JPQL_PARM_CODE + "AND e.password = :" + JPQL_PARM_PASSWORD;
+            + JPQL_PARM_CODE + " AND e.password = :" + JPQL_PARM_PASSWORD;
 
     String Q_EMP_COUNT_REGISTERED_BY_CODE = ENTITY_EMP + ".countRegisteredByCode";
     String Q_EMP_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Employee AS e WHERE e.code = :" + JPQL_PARM_CODE;

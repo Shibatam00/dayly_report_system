@@ -49,10 +49,10 @@ public enum AttributeConst {
         this.text = null;
         this.i = i;
     }
-    public String getValu() {
+    public String getValue() {
         return this.text;
     }
-    public Integer getInteger() {
+    public Integer getIntegerValue() {
         return this.i;
     }
 }
