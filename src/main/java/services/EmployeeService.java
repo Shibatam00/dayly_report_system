@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
-import action.views.EmployeeConverter;
-import action.views.EmployeeView;
+import actions.views.EmployeeConverter;
+import actions.views.EmployeeView;
 import constants.JpaConst;
 import models.Employee;
 import models.validators.EmployeeValidator;

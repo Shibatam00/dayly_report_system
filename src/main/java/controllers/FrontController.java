@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.ActionBase;
-import action.UnknownAction;
+import actions.ActionBase;
+import actions.UnknownAction;
 import constants.ForwardConst;
 
-@WebServlet(name = "FrontController", urlPatterns = { "/" })
+@WebServlet("/")
 public class FrontController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -47,7 +47,10 @@ public class FrontController extends HttpServlet {
 
             type = Class.forName(String.format("actions.%sAction", actionString));
 
-            action = (ActionBase) (type.asSubclass(ActionBase.class).getDeclaredConstructor().newInstance());
+            action = (ActionBase) (type.asSubclass(ActionBase.class)
+                    .getDeclaredConstructor()
+                    .newInstance());
+
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SecurityException
                 | IllegalArgumentException | InvocationTargetException | NoSuchMethodException e) {
             action = new UnknownAction();

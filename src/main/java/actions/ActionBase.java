@@ -1,4 +1,4 @@
-package action;
+package actions;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -34,18 +34,18 @@ public abstract class ActionBase {
 
     protected void invoke() throws ServletException, IOException {
         Method commandMethod;
-
         try {
+
             String command = request.getParameter(ForwardConst.CMD.getValue());
 
             commandMethod = this.getClass().getDeclaredMethod(command, new Class[0]);
-            commandMethod.invoke(this, new Object[0]);
+            commandMethod.invoke(this, new Object[0]); //メソッドに渡す引数はなし
 
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
-                | InvocationTargetException e) {
+                | InvocationTargetException | NullPointerException e) {
+
             e.printStackTrace();
             forward(ForwardConst.FW_ERR_UNKNOWN);
-
         }
     }
 
@@ -55,6 +55,7 @@ public abstract class ActionBase {
         String forward = String.format("/WEB-INF/views/%s.jsp", target.getValue());
         RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
         dispatcher.forward(request, response);
+
     }
 
     //URL構築・リダイレクト

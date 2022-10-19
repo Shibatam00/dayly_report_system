@@ -5,7 +5,7 @@ public enum AttributeConst {
 
     FLUSH("flush"),
 
-    MAX_ROW("max_row"),
+    MAX_ROW("maxRow"),
     PAGE("page"),
 
     TOKEN("_token"),
