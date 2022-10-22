@@ -54,6 +54,7 @@ public abstract class ActionBase {
 
         String forward = String.format("/WEB-INF/views/%s.jsp", target.getValue());
         RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
+
         dispatcher.forward(request, response);
 
     }
@@ -74,11 +75,14 @@ public abstract class ActionBase {
         String _token = getRequestParam(AttributeConst.TOKEN);
 
         if (_token == null || !(_token.equals(getTokenId()))) {
+
             forward(ForwardConst.FW_ERR_UNKNOWN);
+
             return false;
         } else {
             return true;
         }
+
     }
 
     protected String getTokenId() {
