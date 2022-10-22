@@ -8,7 +8,7 @@
 <c:set var="action" value="${ForwardConst.ACT_EMP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commUpd" value="${ForwardConst.CMD_UPDATE.getValue()}" />
-<c:set var="commDel" value="${FoewardConst.CMD_DESTROY.getValue()}" />
+<c:set var="commDel" value="${ForwardConst.CMD_DESTROY.getValue()}" />
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
@@ -16,7 +16,7 @@
         <p>(パスワードは変更する場合のみ入力してください)</p>
 
         <form method="POST"
-            action="<c:url value='?action=${action}comand=${commUpd}'/>">
+            action="<c:url value='?action=${action}&command=${commUpd}'/>">
             <c:import url="_form.jsp" />
         </form>
 
@@ -32,10 +32,10 @@
 
         <script>
             function confirmDestroy() {
-                if (sonfirm("本当に削除していいですか？")) {
+                if (confirm("本当に削除していいですか？")) {
                     document.forms[1].submit();
                 }
-            }}
+            }
         </script>
 
         <p>

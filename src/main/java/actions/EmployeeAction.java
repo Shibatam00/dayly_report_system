@@ -111,4 +111,48 @@ public class EmployeeAction extends ActionBase {
         forward(ForwardConst.FW_EMP_EDIT);
     }
 
+    public void update() throws ServletException, IOException {
+
+        if (checkToken()) {
+            EmployeeView ev = new EmployeeView(
+                    toNumber(getRequestParam(AttributeConst.EMP_ID)),
+                    getRequestParam(AttributeConst.EMP_CODE),
+                    getRequestParam(AttributeConst.EMP_NAME),
+                    getRequestParam(AttributeConst.EMP_PASS),
+                    toNumber(getRequestParam(AttributeConst.EMP_ADMIN_FLG)),
+                    null,
+                    null,
+                    AttributeConst.DEL_FLAG_FALSE.getIntegerValue());
+
+            String pepper = getContextScope(PropertyConst.PEPPER);
+
+            List<String> errors = service.update(ev, pepper);
+
+            if (errors.size() > 0) {
+
+                putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
+                putRequestScope(AttributeConst.EMPLOYEE, ev); //入力された従業員情報
+                putRequestScope(AttributeConst.ERR, errors); //エラーのリスト
+
+                forward(ForwardConst.FW_EMP_EDIT);
+            } else {
+
+                putSessionScope(AttributeConst.FLUSH, MessageConst.I_UPDATED.getMessage());
+
+                redirect(ForwardConst.ACT_EMP, ForwardConst.CMD_INDEX);
+            }
+        }
+    }
+
+    public void destroy() throws ServletException, IOException {
+
+        if (checkToken()) {
+            service.destroy(toNumber(getRequestParam(AttributeConst.EMP_ID)));
+
+            putSessionScope(AttributeConst.FLUSH, MessageConst.I_DELETED.getMessage());
+
+            redirect(ForwardConst.ACT_EMP, ForwardConst.CMD_INDEX);
+        }
+    }
+
 }
