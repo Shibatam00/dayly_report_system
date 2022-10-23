@@ -36,7 +36,7 @@ public class Employee {
 
     @Id
     @Column(name = JpaConst.EMP_COL_ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //プライマリキーカラムにユニークな値を自動で生成
     private Integer id;
 
     @Column(name = JpaConst.EMP_COL_CODE, nullable = false, unique = true)
