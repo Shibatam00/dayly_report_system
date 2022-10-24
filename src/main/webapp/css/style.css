@@ -9,10 +9,30 @@ body {
 #header {
     width: 100%;
     height: 70px;
-    margin:0 auto;
-    text-align:center;
-    background-color: rgb(192, 192, 192)
+    background-color: #000000;
+    display:block
 }
+
+#header_menu {
+    width: 57%;
+    padding-top: 17px;
+    padding-left: 3%;
+    display: inline-block;
+}
+
+#employee_name {
+    color: #cccccc;
+    width: 36%;
+    padding-right: 3%;
+    text-align: right;
+    display: inline-block;
+}
+
+#header a {
+    color: #eeeeee;
+}
+
+
 
 #content {
     width: 94%;
@@ -21,10 +41,10 @@ body {
 }
 
 h1 {
-    font-family: "Nico Moji";
-    width: 94%;
-    padding-top: 5px;
-    font-size: 40px;
+    font-size: 24px;
+    display: inline;
+}
+h1 a {
     color: #eeeeee;
 }
 
@@ -91,26 +111,45 @@ button {
 #flash_success p {
     display: table-cell;
 }
-@-webkit-keyframes fade-in-out {
-  0% {visibility: hidden; opacity: 0;}
-  50% {visibility: visible; opacity: 1;}
-  100% {visibility: hidden; opacity: 0;}
-}
 
+@-webkit-keyframes fade-in-out {
+    0% {
+    visibility: hidden;
+    opacity: 0;
+}
+50%{
+    visibility : visible;
+    opacity : 1;
+}
+100%{
+    visibility : hidden;
+    opacity : 0;
+}
+}
 @keyframes fade-in-out {
-  0% {visibility: hidden; opacity: 0;}
-  50% {visibility: visible; opacity: 1;}
-  100% {visibility: hidden; opacity: 0;}
+    0% {
+    visibility: hidden;
+    opacity: 0;
+}
+    50%{
+    visibility:visible;
+    opacity:1;
+}
+    100%{
+    visibility:hidden;
+    opacity:0;
+}
 }
 #flush_error {
-    width:100%;
-    padding-top:28px;
-    padding-left:2%;
-    padding-bottom:28px;
-    margin-bottom:15px;
-    color:#721c24;
-    background-color:#f8d7da;
+    width: 100%;
+    padding-top: 28px;
+    padding-left: 2%;
+    padding-bottom: 28px;
+    margin-bottom: 15px;
+    color: #721c24;
+    background-color: #f8d7da;
 }
+
 table#employee_list th {
     width: 30%;
     padding: 10px 2%;
@@ -122,13 +161,13 @@ table#employee_list td {
 }
 
 tr.row1 {
-        background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
+
 tr.row0 {
-        background-color: #ffffff;
+    background-color: #ffffff;
 }
+
 select {
     height: 30px;
 }
-
-
