@@ -29,14 +29,14 @@
 
                 <c:forEach var="report" items="${reports}" varStatus="status">
                     <fmt:parseDate value="${report.reportDate}"
-                        pattern="yyyy年MM月dd日(E)" var="reportDay" type="date" />
+                        pattern="yyyy-MM-dd" var="reportDay" type="date" />
 
                     <tr class="row${status.count % 2}">
                         <td class="report_name">
                             <c:out value="${report.employee.name}" />
                         </td>
                         <td class="report_date">
-                            <fmt:formatDate value="${reportDay}" pattern="yyyy年MM月dd日(E)" />
+                            <fmt:formatDate value="${reportDay}" pattern="yyyy-MM-dd" />
                         </td>
                         <td class="repoet_title">${report.title}</td>
                         <td class="report_action">

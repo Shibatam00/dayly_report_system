@@ -1,6 +1,7 @@
 package actions;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -41,6 +42,18 @@ public class ReportAction extends ActionBase{
             removeSessionScope(AttributeConst.FLUSH);
         }
         forward(ForwardConst.FW_REP_INDEX);
+    }
+    //新規登録画面を表示
+    public void entryNew() throws ServletException, IOException{
+
+        putRequestScope(AttributeConst.TOKEN, getTokenId());
+
+        //日付のみ設定して日報インスタンスを作成
+        ReportView rv = new ReportView();
+        rv.setReportDate(LocalDate.now());
+        putRequestScope(AttributeConst.REPORT, rv);
+
+        forward(ForwardConst.FW_REP_NEW);
     }
 
 }
