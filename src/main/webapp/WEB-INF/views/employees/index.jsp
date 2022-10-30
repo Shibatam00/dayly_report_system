@@ -47,7 +47,7 @@
                     </tr>
                 </c:forEach>
             </tbody>
-        </table>
+        </table><br/>
         <div id="pagination">
             （全 ${employees_count} 件）
             <br />
